@@ -7,14 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DC084FAD28098AE6007BDFDE /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC084FAC28098AE6007BDFDE /* Extension.swift */; };
 		DCE8ABAE280930760061796E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE8ABAD280930760061796E /* AppDelegate.swift */; };
-		DCE8ABB0280930760061796E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE8ABAF280930760061796E /* SceneDelegate.swift */; };
-		DCE8ABB2280930760061796E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE8ABB1280930760061796E /* ViewController.swift */; };
-		DCE8ABB5280930760061796E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DCE8ABB3280930760061796E /* Main.storyboard */; };
+		DCE8ABB2280930760061796E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE8ABB1280930760061796E /* LoginViewController.swift */; };
 		DCE8ABB7280930780061796E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DCE8ABB6280930780061796E /* Assets.xcassets */; };
 		DCE8ABBA280930780061796E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DCE8ABB8280930780061796E /* LaunchScreen.storyboard */; };
 		DCE8ABC5280930780061796E /* SurveyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE8ABC4280930780061796E /* SurveyTests.swift */; };
 		DCE8ABD0280930780061796E /* SurveyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE8ABCF280930780061796E /* SurveyUITests.swift */; };
+		DCE8ABF32809577E0061796E /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE8ABF22809577E0061796E /* LoginView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,11 +35,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		DC084FAC28098AE6007BDFDE /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		DCE8ABAA280930760061796E /* Survey.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Survey.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCE8ABAD280930760061796E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		DCE8ABAF280930760061796E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		DCE8ABB1280930760061796E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		DCE8ABB4280930760061796E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		DCE8ABB1280930760061796E /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		DCE8ABB6280930780061796E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DCE8ABB9280930780061796E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DCE8ABBB280930780061796E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -49,6 +48,7 @@
 		DCE8ABCB280930780061796E /* SurveyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SurveyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCE8ABCF280930780061796E /* SurveyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyUITests.swift; sourceTree = "<group>"; };
 		DCE8ABD1280930780061796E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DCE8ABF22809577E0061796E /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,11 +99,11 @@
 		DCE8ABAC280930760061796E /* Survey */ = {
 			isa = PBXGroup;
 			children = (
-				DCE8ABAD280930760061796E /* AppDelegate.swift */,
-				DCE8ABAF280930760061796E /* SceneDelegate.swift */,
-				DCE8ABB1280930760061796E /* ViewController.swift */,
-				DCE8ABB3280930760061796E /* Main.storyboard */,
 				DCE8ABB6280930780061796E /* Assets.xcassets */,
+				DCE8ABAD280930760061796E /* AppDelegate.swift */,
+				DCE8ABF22809577E0061796E /* LoginView.swift */,
+				DCE8ABB1280930760061796E /* LoginViewController.swift */,
+				DC084FAC28098AE6007BDFDE /* Extension.swift */,
 				DCE8ABB8280930780061796E /* LaunchScreen.storyboard */,
 				DCE8ABBB280930780061796E /* Info.plist */,
 			);
@@ -233,7 +233,6 @@
 			files = (
 				DCE8ABBA280930780061796E /* LaunchScreen.storyboard in Resources */,
 				DCE8ABB7280930780061796E /* Assets.xcassets in Resources */,
-				DCE8ABB5280930760061796E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -258,9 +257,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DCE8ABB2280930760061796E /* ViewController.swift in Sources */,
+				DCE8ABF32809577E0061796E /* LoginView.swift in Sources */,
+				DCE8ABB2280930760061796E /* LoginViewController.swift in Sources */,
 				DCE8ABAE280930760061796E /* AppDelegate.swift in Sources */,
-				DCE8ABB0280930760061796E /* SceneDelegate.swift in Sources */,
+				DC084FAD28098AE6007BDFDE /* Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -296,14 +296,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		DCE8ABB3280930760061796E /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				DCE8ABB4280930760061796E /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		DCE8ABB8280930780061796E /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -439,6 +431,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9786TSAYF2;
 				INFOPLIST_FILE = Survey/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -458,6 +451,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9786TSAYF2;
 				INFOPLIST_FILE = Survey/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
