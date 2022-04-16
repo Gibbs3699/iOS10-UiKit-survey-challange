@@ -14,11 +14,10 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        layout()
-
+        setupView()
     }
     
-    func layout() {
+    func setupView() {
         view.addSubview(loginView)
         
         // loginView
@@ -27,6 +26,14 @@ class LoginViewController: UIViewController {
         loginView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 1).isActive = true
         loginView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 1).isActive = true
         
+        self.loginView.signInAction = signInPressed
     }
 }
 
+// MARK: - Action
+
+extension LoginViewController {
+    @objc func signInPressed() {
+        print("Sign in pressed!!!!!!!")
+    }
+}

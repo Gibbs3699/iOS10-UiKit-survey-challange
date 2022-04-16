@@ -9,6 +9,8 @@ import UIKit
 
 class LoginView: UIView {
 
+    var signInAction: (() -> Void)?
+    
     private let stackView: UIStackView = {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -40,37 +42,19 @@ class LoginView: UIView {
     }()
     
     private let emailTextField: UITextField = {
-        let textField = UITextField()
-        textField.layer.cornerRadius = 12
-        textField.backgroundColor = UIColor(white: 1.0, alpha: 0.18)
-        textField.textColor = UIColor(white: 1.0, alpha: 1.0)
-        textField.font = UIFont.systemFont(ofSize: 17)
-        textField.placeholder = "Email"
+        let textField = UITextField(placeHolder: "Email")
         textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.setLeftPaddingPoints(13)
         return textField
     }()
     
     private let passwordTextField: UITextField = {
-        let textField = UITextField()
-        textField.layer.cornerRadius = 12
-        textField.backgroundColor = UIColor(white: 1.0, alpha: 0.18)
-        textField.textColor = UIColor(white: 1.0, alpha: 1.0)
-        textField.font = UIFont.systemFont(ofSize: 17)
-        textField.placeholder = "Password"
-        textField.isSecureTextEntry = true
+        let textField = UITextField(placeHolder: "Password")
         textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.setLeftPaddingPoints(13)
         return textField
     }()
     
     private let signInButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("Log in", for: [])
-        button.setTitleColor(.black, for: [])
-        button.titleLabel?.font = .systemFont(ofSize: 17.0, weight: .bold)
-        button.layer.cornerRadius = 12
-        button.backgroundColor = .white
+        let button = UIButton(title: "Log in")
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -128,4 +112,12 @@ class LoginView: UIView {
         stackView.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
     }
 
+}
+
+// MARK: - Action
+
+extension LoginView {
+    @objc func handleSignIn() {
+        signInAction?()
+    }
 }
