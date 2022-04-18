@@ -19,13 +19,6 @@ class LoginView: UIView {
         return stackView
     }()
     
-    private let backgroundImage: UIImageView = {
-        let background = UIImageView()
-        background.image = UIImage(named: "Background")
-        background.translatesAutoresizingMaskIntoConstraints = false
-        return background
-    }()
-    
     private let overlayImage: UIImageView = {
         let overlay = UIImageView()
         overlay.image = UIImage(named: "Image")
@@ -34,20 +27,13 @@ class LoginView: UIView {
         return overlay
     }()
     
-    private let logoImage: UIImageView = {
-        let logo = UIImageView()
-        logo.image = UIImage(named: "Logo White")
-        logo.translatesAutoresizingMaskIntoConstraints = false
-        return logo
-    }()
-    
-    private let emailTextField: UITextField = {
+    let emailTextField: UITextField = {
         let textField = UITextField(placeHolder: "Email")
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
     }()
     
-    private let passwordTextField: UITextField = {
+    let passwordTextField: UITextField = {
         let textField = UITextField(placeHolder: "Password")
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
@@ -56,6 +42,7 @@ class LoginView: UIView {
     private let signInButton: UIButton = {
         let button = UIButton(title: "Log in")
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(handleSignIn), for: .touchUpInside)
         return button
     }()
     
@@ -70,7 +57,6 @@ class LoginView: UIView {
     }
     
     func layout() {
-        addSubview(backgroundImage)
         addSubview(overlayImage)
 //        addSubview(logoImage)
         stackView.addArrangedSubview(emailTextField)
@@ -78,23 +64,11 @@ class LoginView: UIView {
         stackView.addArrangedSubview(signInButton)
         addSubview(stackView)
         
-        // backgroundImage
-        backgroundImage.topAnchor.constraint(equalTo: topAnchor).isActive = true
-        backgroundImage.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
-        backgroundImage.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
-        backgroundImage.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
-        
         // overlayImage
         overlayImage.topAnchor.constraint(equalTo: topAnchor).isActive = true
         overlayImage.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
         overlayImage.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
         overlayImage.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
-        
-        // logoImage
-//        logoImage.widthAnchor.constraint(equalToConstant: 200).isActive = true
-//        logoImage.heightAnchor.constraint(equalToConstant: 48).isActive = true
-//        logoImage.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
-//        logoImage.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
 
         // emailTextField
         emailTextField.widthAnchor.constraint(equalToConstant: 327).isActive = true

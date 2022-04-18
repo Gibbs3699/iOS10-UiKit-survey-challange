@@ -10,6 +10,9 @@
 		DC084FAD28098AE6007BDFDE /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC084FAC28098AE6007BDFDE /* Extension.swift */; };
 		DC084FB5280AA04D007BDFDE /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC084FB4280AA04D007BDFDE /* UITextField+Extension.swift */; };
 		DC084FBA280AA060007BDFDE /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC084FB9280AA060007BDFDE /* UIButton+Extension.swift */; };
+		DC084FC9280AC88F007BDFDE /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC084FC8280AC88F007BDFDE /* HomeViewController.swift */; };
+		DC93B706280C4AAB00FAE98C /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC93B705280C4AAB00FAE98C /* HomeView.swift */; };
+		DC93B70B280C4DC700FAE98C /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC93B70A280C4DC700FAE98C /* SplashViewController.swift */; };
 		DCE8ABAE280930760061796E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE8ABAD280930760061796E /* AppDelegate.swift */; };
 		DCE8ABB2280930760061796E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE8ABB1280930760061796E /* LoginViewController.swift */; };
 		DCE8ABB7280930780061796E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DCE8ABB6280930780061796E /* Assets.xcassets */; };
@@ -40,6 +43,9 @@
 		DC084FAC28098AE6007BDFDE /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		DC084FB4280AA04D007BDFDE /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
 		DC084FB9280AA060007BDFDE /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
+		DC084FC8280AC88F007BDFDE /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		DC93B705280C4AAB00FAE98C /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		DC93B70A280C4DC700FAE98C /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		DCE8ABAA280930760061796E /* Survey.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Survey.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCE8ABAD280930760061796E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DCE8ABB1280930760061796E /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -118,8 +124,11 @@
 				DCE8ABAD280930760061796E /* AppDelegate.swift */,
 				DCE8ABF22809577E0061796E /* LoginView.swift */,
 				DCE8ABB1280930760061796E /* LoginViewController.swift */,
+				DC084FC8280AC88F007BDFDE /* HomeViewController.swift */,
 				DCE8ABB8280930780061796E /* LaunchScreen.storyboard */,
 				DCE8ABBB280930780061796E /* Info.plist */,
+				DC93B705280C4AAB00FAE98C /* HomeView.swift */,
+				DC93B70A280C4DC700FAE98C /* SplashViewController.swift */,
 			);
 			path = Survey;
 			sourceTree = "<group>";
@@ -274,8 +283,11 @@
 				DC084FB5280AA04D007BDFDE /* UITextField+Extension.swift in Sources */,
 				DCE8ABF32809577E0061796E /* LoginView.swift in Sources */,
 				DCE8ABB2280930760061796E /* LoginViewController.swift in Sources */,
+				DC93B70B280C4DC700FAE98C /* SplashViewController.swift in Sources */,
 				DCE8ABAE280930760061796E /* AppDelegate.swift in Sources */,
 				DC084FAD28098AE6007BDFDE /* Extension.swift in Sources */,
+				DC93B706280C4AAB00FAE98C /* HomeView.swift in Sources */,
+				DC084FC9280AC88F007BDFDE /* HomeViewController.swift in Sources */,
 				DC084FBA280AA060007BDFDE /* UIButton+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
