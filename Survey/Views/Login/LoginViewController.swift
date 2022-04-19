@@ -30,10 +30,10 @@ class LoginViewController: UIViewController {
     }
     
     private let logoImage: UIImageView = {
-        let logo = UIImageView()
-        logo.image = UIImage(named: "Logo White")
-        logo.translatesAutoresizingMaskIntoConstraints = false
-        return logo
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "Logo White")
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
     }()
     
     override func viewDidLoad() {
@@ -49,15 +49,20 @@ class LoginViewController: UIViewController {
         
         // loginView
         loginView.translatesAutoresizingMaskIntoConstraints = false
-        loginView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
-        loginView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 1).isActive = true
-        loginView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 1).isActive = true
+        
+        NSLayoutConstraint.activate([
+            loginView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            loginView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 1),
+            loginView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 1)
+        ])
         
         // logoImage
-        logoImage.widthAnchor.constraint(equalToConstant: 200).isActive = true
-        logoImage.heightAnchor.constraint(equalToConstant: 48).isActive = true
-        logoImage.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        logoImage.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        NSLayoutConstraint.activate([
+            logoImage.widthAnchor.constraint(equalToConstant: 200),
+            logoImage.heightAnchor.constraint(equalToConstant: 48),
+            logoImage.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            logoImage.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+        ])
         
         self.loginView.signInAction = signInPressed
     }
@@ -66,6 +71,7 @@ class LoginViewController: UIViewController {
 // MARK: - Action
 
 extension LoginViewController {
+    
     @objc func signInPressed() {
         login()
         print("Sign in pressed!!!!!!!")

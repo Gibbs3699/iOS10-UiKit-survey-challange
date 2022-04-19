@@ -13,7 +13,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     let loginViewController = LoginViewController()
     let homeViewController = HomeViewController()
+    let surveyViewController = SurveyViewController()
     let splashViewController = SplashViewController()
+    let thankYouViewController = ThankYouViewController()
+    
+    let layout = UICollectionViewFlowLayout()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -23,9 +27,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         loginViewController.delegate = self
         splashViewController.delegate = self
+        homeViewController.delegate = self
+        surveyViewController.delegate = self
         
         displaySplash()
-        
+    
         return true
     }
     
@@ -38,9 +44,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     private func displayHome() {
+        let homeViewController = HomeViewController(collectionViewLayout: layout)
+        layout.scrollDirection = .horizontal
+        
         setRootViewController(homeViewController)
     }
     
+    private func displaySurvey() {
+        setRootViewController(surveyViewController)
+    }
+    
+    private func displayThankyou() {
+        setRootViewController(thankYouViewController)
+    }
 
 }
 
@@ -51,8 +67,20 @@ extension AppDelegate: LoginViewControllerDelegate {
 }
 
 extension AppDelegate: SplashViewControllerDelegate {
-    func didFinishedSplash() {
+    func didSplash() {
         displayLogin()
+    }
+}
+
+extension AppDelegate: HomeViewControllerDelegate {
+    func didHome() {
+        displaySurvey()
+    }
+}
+
+extension AppDelegate: SurveyViewControllerDelegate {
+    func didSurvey() {
+        displayThankyou()
     }
 }
 
@@ -73,3 +101,4 @@ extension AppDelegate {
                           completion: nil)
     }
 }
+

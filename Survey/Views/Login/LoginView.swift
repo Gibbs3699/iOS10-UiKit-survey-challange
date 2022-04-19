@@ -23,7 +23,6 @@ class LoginView: UIView {
         let overlay = UIImageView()
         overlay.image = UIImage(named: "Image")
         overlay.translatesAutoresizingMaskIntoConstraints = false
-//        overlay.applyBlurEffect()
         return overlay
     }()
     
@@ -65,25 +64,35 @@ class LoginView: UIView {
         addSubview(stackView)
         
         // overlayImage
-        overlayImage.topAnchor.constraint(equalTo: topAnchor).isActive = true
-        overlayImage.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
-        overlayImage.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
-        overlayImage.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+        NSLayoutConstraint.activate([
+            overlayImage.topAnchor.constraint(equalTo: topAnchor),
+            overlayImage.leftAnchor.constraint(equalTo: leftAnchor),
+            overlayImage.trailingAnchor.constraint(equalTo: trailingAnchor),
+            overlayImage.bottomAnchor.constraint(equalTo: bottomAnchor)
+        ])
 
         // emailTextField
-        emailTextField.widthAnchor.constraint(equalToConstant: 327).isActive = true
-        emailTextField.heightAnchor.constraint(equalToConstant: 56).isActive = true
+        NSLayoutConstraint.activate([
+            emailTextField.widthAnchor.constraint(equalToConstant: 327),
+            emailTextField.heightAnchor.constraint(equalToConstant: 56)
+        ])
         
         // passwordTextField
-        passwordTextField.widthAnchor.constraint(equalToConstant: 327).isActive = true
-        passwordTextField.heightAnchor.constraint(equalToConstant: 56).isActive = true
+        NSLayoutConstraint.activate([
+            passwordTextField.widthAnchor.constraint(equalToConstant: 327),
+            passwordTextField.heightAnchor.constraint(equalToConstant: 56)
+        ])
         
         // signInButton
-        signInButton.widthAnchor.constraint(equalToConstant: 327).isActive = true
-        signInButton.heightAnchor.constraint(equalToConstant: 56).isActive = true
+        NSLayoutConstraint.activate([
+            signInButton.widthAnchor.constraint(equalToConstant: 327),
+            signInButton.heightAnchor.constraint(equalToConstant: 56)
+        ])
         
-        stackView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
-        stackView.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
+        NSLayoutConstraint.activate([
+            stackView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            stackView.centerYAnchor.constraint(equalTo: self.centerYAnchor)
+        ])
     }
 
 }

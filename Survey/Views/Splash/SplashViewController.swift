@@ -8,24 +8,25 @@
 import UIKit
 
 protocol SplashViewControllerDelegate: AnyObject {
-    func didFinishedSplash()
+    func didSplash()
 }
+
 class SplashViewController: UIViewController {
 
     weak var delegate: SplashViewControllerDelegate?
     
     private let backgroundImage: UIImageView = {
-        let background = UIImageView()
-        background.image = UIImage(named: "Splash")
-        background.translatesAutoresizingMaskIntoConstraints = false
-        return background
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "Splash")
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
     }()
     
     private let logoImage: UIImageView = {
-        let logo = UIImageView()
-        logo.image = UIImage(named: "Logo White")
-        logo.translatesAutoresizingMaskIntoConstraints = false
-        return logo
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "Logo White")
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
     }()
     
     override func viewDidLoad() {
@@ -63,7 +64,7 @@ extension SplashViewController {
         }, completion: {done in
             if done {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
-                    self.delegate?.didFinishedSplash()
+                    self.delegate?.didSplash()
                 })
             }
         })
