@@ -19,6 +19,10 @@ class LoginViewController: UIViewController {
     
     let loginView = LoginView()
     
+    lazy var viewModel: LoginViewModel = {
+        return LoginViewModel()
+    }()
+    
     weak var delegate: LoginViewControllerDelegate?
 
     var email: String? {
@@ -82,17 +86,19 @@ extension LoginViewController {
             assertionFailure("Username / password should never be nil")
             return
         }
+        
+        viewModel.login(email: email, password: password)
 //
 //        if username.isEmpty || password.isEmpty {
 //            configureView(withMessage: "Username / password cannot be blank")
 //            return
 //        }
 //
-        if email == "" && password == "" {
-            delegate?.didLogin()
-        }else {
-            print("Incorrect username / password")
-        }
+//        if email == "" && password == "" {
+//            delegate?.didLogin()
+//        }else {
+//            print("Incorrect username / password")
+//        }
     }
 }
 
@@ -108,4 +114,3 @@ extension LoginViewController {
         })
     }
 }
-

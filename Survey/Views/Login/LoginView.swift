@@ -29,12 +29,15 @@ class LoginView: UIView {
     let emailTextField: UITextField = {
         let textField = UITextField(placeHolder: "Email")
         textField.translatesAutoresizingMaskIntoConstraints = false
+        textField.text = "dev@nimblehq.co"
         return textField
     }()
     
     let passwordTextField: UITextField = {
         let textField = UITextField(placeHolder: "Password")
         textField.translatesAutoresizingMaskIntoConstraints = false
+        textField.isSecureTextEntry = true
+        textField.text = "12345678"
         return textField
     }()
     
@@ -93,6 +96,9 @@ class LoginView: UIView {
             stackView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             stackView.centerYAnchor.constraint(equalTo: self.centerYAnchor)
         ])
+        
+        emailTextField.delegate = self
+        passwordTextField.delegate = self
     }
 
 }
@@ -102,5 +108,21 @@ class LoginView: UIView {
 extension LoginView {
     @objc func handleSignIn() {
         signInAction?()
+    }
+}
+
+extension LoginView: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        emailTextField.endEditing(true)
+        passwordTextField.endEditing(true)
+        return true
+    }
+    
+    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+        return true
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        //
     }
 }
