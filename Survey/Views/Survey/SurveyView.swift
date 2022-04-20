@@ -10,6 +10,7 @@ import UIKit
 class SurveyView: UIView {
 
     var surveyAction: (() -> Void)?
+    var backAction: (() -> Void)?
     
     private let backgroundImage: UIImageView = {
         let imageView = UIImageView()
@@ -29,7 +30,7 @@ class SurveyView: UIView {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setImage(UIImage(named: "Arrow"), for: .normal)
-//        button.addTarget(self, action: #selector(handleSignIn), for: .touchUpInside)
+        button.addTarget(self, action: #selector(handleBack), for: .touchUpInside)
         return button
     }()
     
@@ -105,5 +106,9 @@ extension SurveyView {
     
     @objc func handleSurvey() {
         surveyAction?()
+    }
+    
+    @objc func handleBack() {
+        backAction?()
     }
 }

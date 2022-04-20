@@ -35,7 +35,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     
-    private func displaySplash() {
+     func displaySplash() {
         setRootViewController(splashViewController)
     }
     
@@ -62,25 +62,34 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 extension AppDelegate: LoginViewControllerDelegate {
     func didLogin() {
-        displayHome()
+        print("didLogin")
+        displaySurvey()
     }
 }
 
 extension AppDelegate: SplashViewControllerDelegate {
     func didSplash() {
+        print("didSplash")
         displayLogin()
     }
 }
 
 extension AppDelegate: HomeViewControllerDelegate {
     func didHome() {
+        print("didHome")
         displaySurvey()
     }
 }
 
 extension AppDelegate: SurveyViewControllerDelegate {
     func didSurvey() {
+        print("didSurvey")
         displayThankyou()
+    }
+    
+    func backToHome() {
+        print("backToHome")
+        displayHome()
     }
 }
 

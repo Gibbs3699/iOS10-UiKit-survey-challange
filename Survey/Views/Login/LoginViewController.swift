@@ -74,7 +74,7 @@ extension LoginViewController {
     
     @objc func signInPressed() {
         login()
-        print("Sign in pressed!!!!!!!")
+//        print("Sign in pressed!!!!!!!")
     }
     
     private func login() {

@@ -26,4 +26,3 @@ extension UITextField {
         self.setLeftPaddingPoints(13)
     }
 }
-

@@ -9,6 +9,8 @@ import UIKit
 
 protocol SurveyViewControllerDelegate: AnyObject {
     func didSurvey()
+    
+    func backToHome()
 }
 
 class SurveyViewController: UIViewController {
@@ -37,8 +39,8 @@ class SurveyViewController: UIViewController {
         ])
         
         self.surveyView.surveyAction = surveyPressed
+        self.surveyView.backAction = backPressed
     }
-
 }
 
 // MARK: - Action
@@ -46,8 +48,13 @@ class SurveyViewController: UIViewController {
 extension SurveyViewController {
     
     @objc func surveyPressed() {
-        print("Survey in pressed!!!!!!!")
+//        print("Survey in pressed!!!!!!!")
         delegate?.didSurvey()
+    }
+    
+    @objc func backPressed() {
+//        print("back is pressed!!!!!!!")
+        delegate?.backToHome()
     }
 
 }

@@ -58,20 +58,21 @@ class HomeViewController: UICollectionViewController {
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! HomeCollectionViewCell
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? HomeCollectionViewCell else {
+            fatalError("failed while casting")
+        }
     
         let page = pages[indexPath.item]
         cell.homePage = page
-        
         
         return cell
     }
     
     override func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         
-        let x = targetContentOffset.pointee.x
+        let xPosition = targetContentOffset.pointee.x
         
-        pageControl.currentPage = Int(x / view.frame.width)
+        pageControl.currentPage = Int(xPosition / view.frame.width)
         
     }
 }
@@ -105,8 +106,10 @@ extension HomeViewController {
         let surveyViewController:SurveyViewController = SurveyViewController()
 
         surveyViewController.modalPresentationStyle = .fullScreen
+        surveyViewController.modalTransitionStyle = .coverVertical
         present(surveyViewController, animated: true, completion: nil)
-        print("Home button is pressed!!!!!!!!!!!!!!!!!!")
+//        print("Home button is pressed!!!!!!!!!!!!!!!!!!")
+        
         delegate?.didHome()
     }
 }

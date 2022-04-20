@@ -20,9 +20,9 @@ class HomeCollectionViewCell: UICollectionViewCell {
             
             backgroundImage.image = UIImage(named: unwrappedPage.image)
             
-            let attributedText = NSMutableAttributedString(string: unwrappedPage.title, attributes: [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 28), NSAttributedString.Key.foregroundColor: UIColor.white])
+            let attributedText = NSMutableAttributedString(string: unwrappedPage.title, attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 28), NSAttributedString.Key.foregroundColor: UIColor.white])
             
-            attributedText.append(NSMutableAttributedString(string: "\n\n\(unwrappedPage.description)", attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17), NSAttributedString.Key.foregroundColor: UIColor.white.withAlphaComponent(0.7)]))
+            attributedText.append(NSMutableAttributedString(string: "\n\n\(unwrappedPage.description)", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 17), NSAttributedString.Key.foregroundColor: UIColor.white.withAlphaComponent(0.7)]))
             
             descriptionTextView.attributedText = attributedText
             
@@ -109,6 +109,6 @@ extension HomeCollectionViewCell {
 extension HomeCollectionViewCell {
     @objc func handleSurvey() {
         homeAction?()
-        print("Home action pressed!!!!")
+//        print("Home action pressed!!!!")
     }
 }
