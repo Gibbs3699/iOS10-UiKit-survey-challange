@@ -8,29 +8,37 @@
 import Foundation
 class UserDefaultsManager {
     enum Key: String {
-        case apiKey
-        case secretKey
-        case token
+        case clientId
+        case clientSecret
+        case accessToken
+        case refreshToken
         case isSignedIn
     }
     static let shared: UserDefaultsManager = {
         return UserDefaultsManager()
     }()
-    func getUserCredentials() -> (apiKey: String?, secretKey: String?) {
-        let apiKey = UserDefaults.standard.string(forKey: Key.apiKey.rawValue)
-        let secretKey = UserDefaults.standard.string(forKey: Key.secretKey.rawValue)
-        return (apiKey, secretKey)
+    func getUserClient() -> (clientId: String?, clientSecret: String?) {
+        let clientId = UserDefaults.standard.string(forKey: Key.clientId.rawValue)
+        let clientSecret = UserDefaults.standard.string(forKey: Key.clientSecret.rawValue)
+        return (clientId, clientSecret)
     }
-    func setUserCredentials(apiKey: String, secretKey: String) {
-        UserDefaults.standard.set(apiKey, forKey: Key.apiKey.rawValue)
-        UserDefaults.standard.set(secretKey, forKey: Key.secretKey.rawValue)
+    func setUserClient(clientId: String, clientSecret: String) {
+        UserDefaults.standard.set(clientId, forKey: Key.clientId.rawValue)
+        UserDefaults.standard.set(clientSecret, forKey: Key.clientSecret.rawValue)
         UserDefaults.standard.synchronize()
     }
-    func getToken() -> String? {
-        return UserDefaults.standard.string(forKey: Key.token.rawValue)
+    func getAccessToken() -> String? {
+        return UserDefaults.standard.string(forKey: Key.accessToken.rawValue)
     }
-    func setToken(token: String) {
-        UserDefaults.standard.set(token, forKey: Key.token.rawValue)
+    func setAccessToken(accessToken: String) {
+        UserDefaults.standard.set(accessToken, forKey: Key.accessToken.rawValue)
+        UserDefaults.standard.synchronize()
+    }
+    func getRefreshToken() -> String? {
+        return UserDefaults.standard.string(forKey: Key.refreshToken.rawValue)
+    }
+    func setRefreshToken(refreshToken: String) {
+        UserDefaults.standard.set(refreshToken, forKey: Key.refreshToken.rawValue)
         UserDefaults.standard.synchronize()
     }
     func signInUser() {
@@ -44,9 +52,10 @@ class UserDefaultsManager {
     func isUserSignedIn() -> Bool {
         return UserDefaults.standard.bool(forKey: Key.isSignedIn.rawValue)
     }
-    func signIn(apiKey: String, secretKey: String, token: String) {
-        setUserCredentials(apiKey: apiKey, secretKey: secretKey)
-        setToken(token: token)
+    func signIn(clientId: String, clientSecret: String, accessToken: String, refreshToken: String) {
+        setUserClient(clientId: clientId, clientSecret: clientSecret)
+        setAccessToken(accessToken: accessToken)
+        setRefreshToken(refreshToken: refreshToken)
         signInUser()
     }
 }

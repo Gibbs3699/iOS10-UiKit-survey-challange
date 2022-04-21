@@ -59,11 +59,11 @@ class SplashViewController: UIViewController {
 
 extension SplashViewController {
     private func animate() {
-        UIView.animate(withDuration: 1.5, delay: 0.0, options: UIView.AnimationOptions.curveEaseIn,  animations: {
+        UIView.animate(withDuration: 1.5, delay: 0.0, options: UIView.AnimationOptions.curveEaseIn, animations: {
             self.logoImage.alpha = 1.0
         }, completion: {done in
             if done {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2.0, execute: {
                     self.delegate?.didSplash()
                 })
             }

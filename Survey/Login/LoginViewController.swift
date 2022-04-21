@@ -45,6 +45,7 @@ class LoginViewController: UIViewController {
         
         setupView()
         animate()
+        
     }
     
     func setupView() {
@@ -70,6 +71,16 @@ class LoginViewController: UIViewController {
         
         self.loginView.signInAction = signInPressed
     }
+    
+    func setupBinders() {
+        viewModel.error.bind { [weak self] error in
+            if let error = error {
+                print(error)
+            } else {
+                self?.delegate?.didLogin()
+            }
+        }
+    }
 }
 
 // MARK: - Action
@@ -77,28 +88,10 @@ class LoginViewController: UIViewController {
 extension LoginViewController {
     
     @objc func signInPressed() {
-        login()
-//        print("Sign in pressed!!!!!!!")
-    }
-    
-    private func login() {
-        guard let email = email, let password = password else {
-            assertionFailure("Username / password should never be nil")
-            return
-        }
         
-        viewModel.login(email: email, password: password)
-//
-//        if username.isEmpty || password.isEmpty {
-//            configureView(withMessage: "Username / password cannot be blank")
-//            return
-//        }
-//
-//        if email == "" && password == "" {
-//            delegate?.didLogin()
-//        }else {
-//            print("Incorrect username / password")
-//        }
+        viewModel.login(email: email!, password: password!)
+        
+        setupBinders()
     }
 }
 

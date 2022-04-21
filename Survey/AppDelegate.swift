@@ -63,7 +63,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 extension AppDelegate: LoginViewControllerDelegate {
     func didLogin() {
         print("didLogin")
-        displaySurvey()
+        displayHome()
     }
 }
 
@@ -110,4 +110,3 @@ extension AppDelegate {
                           completion: nil)
     }
 }
-
