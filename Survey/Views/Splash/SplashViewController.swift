@@ -36,7 +36,6 @@ class SplashViewController: UIViewController {
         animate()
     }
     
-    
     func layout() {
         view.addSubview(backgroundImage)
         view.addSubview(logoImage)
@@ -63,7 +62,7 @@ extension SplashViewController {
             self.logoImage.alpha = 1.0
         }, completion: {done in
             if done {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 2.0, execute: {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
                     self.delegate?.didSplash()
                 })
             }

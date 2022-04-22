@@ -48,6 +48,14 @@ class LoginViewController: UIViewController {
         
     }
     
+//    override func viewDidAppear(_ animated: Bool) {
+//        super.viewDidAppear(animated)
+//        print("check when login \(String(describing: UserDefaultsManager.shared.getAccessToken()))")
+//        if let _ = UserDefaultsManager.shared.getAccessToken() {
+//            self.delegate?.didLogin()
+//        }
+//    }
+//
     func setupView() {
         view.addSubview(loginView)
         view.addSubview(logoImage)

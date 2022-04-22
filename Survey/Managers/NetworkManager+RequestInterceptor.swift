@@ -37,8 +37,8 @@ extension NetworkManager: RequestInterceptor {
             let clientSecret = UserDefaultsManager.shared.getUserClient().clientSecret,
             let refreshToken = UserDefaultsManager.shared.getRefreshToken()
             else { return }
-        let parameters = ["grant_type": "refresh_token", "refresh_token": refreshToken,"client_id": clientId, "client_secret": clientSecret]
-        AF.request(authorize, method: .post, parameters: parameters, encoding: JSONEncoding.default).responseJSON { response in
+        let parameters = ["grant_type": "refresh_token", "refresh_token": refreshToken, "client_id": clientId, "client_secret": clientSecret]
+        AF.request(APIClient.authorizeUrl(), method: .post, parameters: parameters, encoding: JSONEncoding.default).responseJSON { response in
             switch response.result {
             case .success:
                 switch response.response?.statusCode {

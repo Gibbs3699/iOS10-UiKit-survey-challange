@@ -1,8 +1,8 @@
 //
-//  HomeSlide.swift
+//  HomePage.swift
 //  Survey
 //
-//  Created by TheGIZzz on 18/4/2565 BE.
+//  Created by TheGIZzz on 22/4/2565 BE.
 //
 
 import UIKit

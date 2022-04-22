@@ -6,27 +6,47 @@
 //
 
 import Foundation
+import Alamofire
 
 class HomeViewModel {
     
-    var grantType: String = "password"
-    var clientId: String = "6GbE8dhoz519l2N_F99StqoOs6Tcmm1rXgda4q__rIw"
-    var clientSecret: String = "_ayfIm7BeUAhx2W1OUqi20fwO3uNxfo1QstyKlFCgHw"
+    private var page: Int = 1
+    private var pageSize: Int = 20
+    private var surveyList = [SurveyAttributes]()
     
-    var error: ObservableObject<String?> = ObservableObject("")
+    // MARK: - Profile
     
-    func login(email: String, password: String) {
-        let parameters = ["grant_type": grantType, "email": email, "password": password, "client_id": clientId, "client_secret": clientSecret]
-        NetworkManager.shared.authorize(parameters: parameters) { (result) in
-            switch result {
-            case .success(let data):
-                if let json = (try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]) {
-                    //
-                }
-            case .failure(let error):
-                print(error)
-                self.error.value = "Login invalid!!!"
-            }
-        }
-    }
+//    func getProfile(_ completion: @escaping (Result<Data, CustomError>) -> Void) {
+//        NetworkManager.shared.getProfile() { (result) in
+//            print("PPPP get userProfile ---> \(result)")
+//            completion(result)
+//        }
+//    }
+    
+    // MARK: - SurveyList
+//    func getSurveyList(completion: @escaping () -> Void) {
+//        NetworkManager.shared.getSurveyList(page: page, pageSize: pageSize) { (result) in
+//            switch result {
+//            case .success(let data):
+//
+//                print("getSurveyList data ----> \(data)")
+//            case .failure(let error):
+//                print(error)
+//            }
+//        }
+//    }
+    
+    
+    
+    // MARK: - Configure Home Collection View Cell
+    
+//    func configureHomeCollectViewCell(cell: HomeCollectionViewCell, at index: Int) {
+//        guard filteredCoins.indices.contains(index) else { return }
+//
+//        let coin = filteredCoins[index].coin
+//        let price =  filteredCoins[index].price
+//        
+//        let homeCollectViewModel = SurveyListViewModel()
+//        cell.configure(using: homeCollectViewModel)
+//    }
 }

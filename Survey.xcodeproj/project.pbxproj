@@ -12,7 +12,10 @@
 		DC084FAD28098AE6007BDFDE /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC084FAC28098AE6007BDFDE /* UIImageView+Extension.swift */; };
 		DC084FB5280AA04D007BDFDE /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC084FB4280AA04D007BDFDE /* UITextField+Extension.swift */; };
 		DC084FBA280AA060007BDFDE /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC084FB9280AA060007BDFDE /* UIButton+Extension.swift */; };
-		DC31F8B9280DBDB3007A5828 /* HomePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC31F8B8280DBDB3007A5828 /* HomePage.swift */; };
+		DC3056162812615A0098AA54 /* SurveyList.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC3056152812615A0098AA54 /* SurveyList.swift */; };
+		DC30561E281269530098AA54 /* HomePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC30561D281269530098AA54 /* HomePage.swift */; };
+		DC305634281275920098AA54 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC305633281275920098AA54 /* Profile.swift */; };
+		DC305639281292C40098AA54 /* SurveyListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC305638281292C40098AA54 /* SurveyListViewModel.swift */; };
 		DC31F8C4280E5D8B007A5828 /* SurveyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC31F8C3280E5D8B007A5828 /* SurveyViewController.swift */; };
 		DC31F8D1280E6259007A5828 /* SurveyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC31F8D0280E6259007A5828 /* SurveyView.swift */; };
 		DC35B994280E750700C5B1E3 /* ThankYouViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC35B993280E750700C5B1E3 /* ThankYouViewController.swift */; };
@@ -25,6 +28,7 @@
 		DCE49E562811032D006D2638 /* ObservableObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE49E552811032D006D2638 /* ObservableObject.swift */; };
 		DCE49E5E281143FB006D2638 /* NetworkManager+RequestInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE49E5D281143FB006D2638 /* NetworkManager+RequestInterceptor.swift */; };
 		DCE49E632811955E006D2638 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE49E622811955E006D2638 /* HomeViewModel.swift */; };
+		DCE49E6828124103006D2638 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE49E6728124103006D2638 /* APIClient.swift */; };
 		DCE8ABAE280930760061796E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE8ABAD280930760061796E /* AppDelegate.swift */; };
 		DCE8ABB2280930760061796E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE8ABB1280930760061796E /* LoginViewController.swift */; };
 		DCE8ABB7280930780061796E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DCE8ABB6280930780061796E /* Assets.xcassets */; };
@@ -66,7 +70,10 @@
 		DC084FAC28098AE6007BDFDE /* UIImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
 		DC084FB4280AA04D007BDFDE /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
 		DC084FB9280AA060007BDFDE /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
-		DC31F8B8280DBDB3007A5828 /* HomePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePage.swift; sourceTree = "<group>"; };
+		DC3056152812615A0098AA54 /* SurveyList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyList.swift; sourceTree = "<group>"; };
+		DC30561D281269530098AA54 /* HomePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePage.swift; sourceTree = "<group>"; };
+		DC305633281275920098AA54 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
+		DC305638281292C40098AA54 /* SurveyListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyListViewModel.swift; sourceTree = "<group>"; };
 		DC31F8C3280E5D8B007A5828 /* SurveyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyViewController.swift; sourceTree = "<group>"; };
 		DC31F8D0280E6259007A5828 /* SurveyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyView.swift; sourceTree = "<group>"; };
 		DC35B993280E750700C5B1E3 /* ThankYouViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThankYouViewController.swift; sourceTree = "<group>"; };
@@ -79,6 +86,7 @@
 		DCE49E552811032D006D2638 /* ObservableObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservableObject.swift; sourceTree = "<group>"; };
 		DCE49E5D281143FB006D2638 /* NetworkManager+RequestInterceptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NetworkManager+RequestInterceptor.swift"; sourceTree = "<group>"; };
 		DCE49E622811955E006D2638 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		DCE49E6728124103006D2638 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		DCE8ABAA280930760061796E /* Survey.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Survey.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCE8ABAD280930760061796E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DCE8ABB1280930760061796E /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -173,8 +181,11 @@
 		DC31F8CF280E61D1007A5828 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				DC31F8B8280DBDB3007A5828 /* HomePage.swift */,
 				DC52970F281001A800649462 /* CustomError.swift */,
+				DC3056152812615A0098AA54 /* SurveyList.swift */,
+				DC305633281275920098AA54 /* Profile.swift */,
+				DC305638281292C40098AA54 /* SurveyListViewModel.swift */,
+				DC30561D281269530098AA54 /* HomePage.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -231,6 +242,7 @@
 				DC5297142810026300649462 /* UserDefaultsManager.swift */,
 				DCE49E552811032D006D2638 /* ObservableObject.swift */,
 				DCE49E5D281143FB006D2638 /* NetworkManager+RequestInterceptor.swift */,
+				DCE49E6728124103006D2638 /* APIClient.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -549,20 +561,24 @@
 			buildActionMask = 2147483647;
 			files = (
 				DCF20271280DB52A00596BCB /* HomeViewController.swift in Sources */,
+				DC30561E281269530098AA54 /* HomePage.swift in Sources */,
 				DC529710281001A800649462 /* CustomError.swift in Sources */,
+				DC305634281275920098AA54 /* Profile.swift in Sources */,
 				DC5297152810026300649462 /* UserDefaultsManager.swift in Sources */,
 				DCE49E632811955E006D2638 /* HomeViewModel.swift in Sources */,
 				DCE49E5E281143FB006D2638 /* NetworkManager+RequestInterceptor.swift in Sources */,
 				DC084FB5280AA04D007BDFDE /* UITextField+Extension.swift in Sources */,
 				DCE8ABF32809577E0061796E /* LoginView.swift in Sources */,
 				DCE8ABB2280930760061796E /* LoginViewController.swift in Sources */,
+				DCE49E6828124103006D2638 /* APIClient.swift in Sources */,
+				DC3056162812615A0098AA54 /* SurveyList.swift in Sources */,
 				DC93B70B280C4DC700FAE98C /* SplashViewController.swift in Sources */,
 				DCF20276280DB93800596BCB /* HomeCollectionViewCell.swift in Sources */,
 				DCE8ABAE280930760061796E /* AppDelegate.swift in Sources */,
-				DC31F8B9280DBDB3007A5828 /* HomePage.swift in Sources */,
 				DC52970B280FFF5900649462 /* LoginViewModel.swift in Sources */,
 				DC31F8D1280E6259007A5828 /* SurveyView.swift in Sources */,
 				DC084FAD28098AE6007BDFDE /* UIImageView+Extension.swift in Sources */,
+				DC305639281292C40098AA54 /* SurveyListViewModel.swift in Sources */,
 				DC529706280FFF0000649462 /* NetworkManager.swift in Sources */,
 				DC31F8C4280E5D8B007A5828 /* SurveyViewController.swift in Sources */,
 				DC084FBA280AA060007BDFDE /* UIButton+Extension.swift in Sources */,

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import AlamofireImage
 
 class HomeCollectionViewCell: UICollectionViewCell {
     
@@ -102,6 +103,20 @@ extension HomeCollectionViewCell {
             surveyButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -54)
         ])
     }
+    
+//    public func configure(using viewModel: SurveyListViewModel) {
+//
+//
+//        configureImage(viewModel.coverImageUrl)
+//    }
+//
+//    private func configureImage(_ imageUrl: String) {
+//        guard let url = imageUrl, let placeholderImage = UIImage(named: "HomeBackground1") else {
+//                return
+//        }
+//
+//        backgroundView.af_setImage(withURL: url, placeholderImage: placeholderImage)
+//    }
 }
 
 // MARK: - Action

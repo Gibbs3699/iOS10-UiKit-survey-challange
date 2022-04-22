@@ -17,6 +17,12 @@ class HomeViewController: UICollectionViewController {
 
     let homeCollectionViewCell = HomeCollectionViewCell()
     
+    private var viewModel: SurveyListViewModel!
+    
+    private var page: Int = 1
+    
+    private var pageSize: Int = 20
+    
     var pages: [HomePage] = []
     
     weak var delegate: HomeViewControllerDelegate?
@@ -47,8 +53,9 @@ class HomeViewController: UICollectionViewController {
         ]
         
         setupLayout()
+        fetchSurveyList()
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 0
     }
@@ -111,5 +118,18 @@ extension HomeViewController {
 //        print("Home button is pressed!!!!!!!!!!!!!!!!!!")
         
         delegate?.didHome()
+    }
+}
+
+extension HomeViewController {
+    private func fetchSurveyList() {
+        NetworkManager().getSurveyList(page: page, pageSize: pageSize) { result in
+            switch result {
+            case .success(let accounts):
+              print("ffffff ----> \(accounts)")
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
     }
 }
