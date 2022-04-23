@@ -10,43 +10,49 @@ import AlamofireImage
 
 class HomeCollectionViewCell: UICollectionViewCell {
     
+    static let identifier = "HomeCollectionViewCell"
+    
     var homeAction: (() -> Void)?
     
-    var homePage: HomePage? {
+    var surveyView: SurveyAttributes? {
         didSet {
-//            print(homePage?.title)
-            guard let unwrappedPage = homePage else {
+            guard let unwrappedSurvey = surveyView else {
                 return
             }
+
+            guard let url = URL(string: unwrappedSurvey.coverImageUrl) else {
+                return
+            }
+            let placeholderImage = UIImage(named: "HomeBackground1")
             
-            backgroundImage.image = UIImage(named: unwrappedPage.image)
-            
-            let attributedText = NSMutableAttributedString(string: unwrappedPage.title, attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 28), NSAttributedString.Key.foregroundColor: UIColor.white])
-            
-            attributedText.append(NSMutableAttributedString(string: "\n\n\(unwrappedPage.description)", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 17), NSAttributedString.Key.foregroundColor: UIColor.white.withAlphaComponent(0.7)]))
-            
+            backgroundImage.af.setImage(withURL: url, placeholderImage: placeholderImage)
+
+            let attributedText = NSMutableAttributedString(string: unwrappedSurvey.title, attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 28), NSAttributedString.Key.foregroundColor: UIColor.white])
+
+            attributedText.append(NSMutableAttributedString(string: "\n\n\(unwrappedSurvey.description)", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 17), NSAttributedString.Key.foregroundColor: UIColor.white.withAlphaComponent(0.7)]))
+
             descriptionTextView.attributedText = attributedText
-            
+
             surveyButton.addTarget(self, action: #selector(handleSurvey), for: .touchUpInside)
-        
+
         }
     }
     
     let stackView = UIStackView()
     
     private let backgroundImage: UIImageView = {
-        let imageView = UIImageView(image: #imageLiteral(resourceName: "HomeBackground1"))
-        imageView.contentMode = .scaleAspectFill
+        let imageView = UIImageView(image: #imageLiteral(resourceName: "HomeBackground2"))
+        imageView.contentMode = .scaleToFill
         imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.addoverlay()
         return imageView
     }()
     
     private let descriptionTextView: UITextView = {
         let textView = UITextView()
+        let attributedText = NSMutableAttributedString(string: "Title", attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 28), NSAttributedString.Key.foregroundColor: UIColor.white])
         
-        let attributedText = NSMutableAttributedString(string: "Working from home Check-In", attributes: [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 28), NSAttributedString.Key.foregroundColor: UIColor.white])
-        
-        attributedText.append(NSMutableAttributedString(string: "\n\nWe would like to know how you feel about our work from home...", attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17), NSAttributedString.Key.foregroundColor: UIColor.white.withAlphaComponent(0.7)]))
+        attributedText.append(NSMutableAttributedString(string: "Description", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 17), NSAttributedString.Key.foregroundColor: UIColor.white.withAlphaComponent(0.7)]))
         
         textView.attributedText = attributedText
         textView.translatesAutoresizingMaskIntoConstraints = false
@@ -79,10 +85,12 @@ class HomeCollectionViewCell: UICollectionViewCell {
 
 extension HomeCollectionViewCell {
     func setupLayout() {
+        backgroundColor = .black
         addSubview(backgroundImage)
         addSubview(descriptionTextView)
         addSubview(surveyButton)
         
+        // backgroundImage
         NSLayoutConstraint.activate([
             backgroundImage.topAnchor.constraint(equalTo: topAnchor),
             backgroundImage.leftAnchor.constraint(equalTo: leftAnchor),
@@ -90,12 +98,14 @@ extension HomeCollectionViewCell {
             backgroundImage.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
         
+        // descriptionTextView
         NSLayoutConstraint.activate([
             descriptionTextView.leftAnchor.constraint(equalTo: leftAnchor, constant: 20),
             descriptionTextView.trailingAnchor.constraint(equalTo: surveyButton.trailingAnchor, constant: -60),
             descriptionTextView.bottomAnchor.constraint(equalTo: surveyButton.topAnchor, constant: 54)
         ])
         
+        // surveyButton
         NSLayoutConstraint.activate([
             surveyButton.widthAnchor.constraint(equalToConstant: 56),
             surveyButton.heightAnchor.constraint(equalToConstant: 56),
@@ -103,20 +113,6 @@ extension HomeCollectionViewCell {
             surveyButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -54)
         ])
     }
-    
-//    public func configure(using viewModel: SurveyListViewModel) {
-//
-//
-//        configureImage(viewModel.coverImageUrl)
-//    }
-//
-//    private func configureImage(_ imageUrl: String) {
-//        guard let url = imageUrl, let placeholderImage = UIImage(named: "HomeBackground1") else {
-//                return
-//        }
-//
-//        backgroundView.af_setImage(withURL: url, placeholderImage: placeholderImage)
-//    }
 }
 
 // MARK: - Action
@@ -124,6 +120,5 @@ extension HomeCollectionViewCell {
 extension HomeCollectionViewCell {
     @objc func handleSurvey() {
         homeAction?()
-//        print("Home action pressed!!!!")
     }
 }

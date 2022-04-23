@@ -23,7 +23,7 @@ class ThankYouViewController: UIViewController {
     private let titleTextView: UITextView = {
         let textView = UITextView()
         
-        let attributedText = NSMutableAttributedString(string: "Thanks for taking the survey.", attributes: [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 28), NSAttributedString.Key.foregroundColor: UIColor.white])
+        let attributedText = NSMutableAttributedString(string: "Thanks for taking the survey.", attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 28), NSAttributedString.Key.foregroundColor: UIColor.white])
         
         textView.attributedText = attributedText
         textView.translatesAutoresizingMaskIntoConstraints = false

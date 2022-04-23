@@ -5,17 +5,21 @@
 //  Created by TheGIZzz on 18/4/2565 BE.
 //
 
+import Foundation
 import UIKit
+import AlamofireImage
 
 protocol HomeViewControllerDelegate: AnyObject {
     func didHome()
 }
 
-private let reuseIdentifier = "Cell"
-
 class HomeViewController: UICollectionViewController {
 
     let homeCollectionViewCell = HomeCollectionViewCell()
+    
+    private var survey: [SurveyAttributes] = [SurveyAttributes]()
+    
+    var pages: [SurveyAttributes] = []
     
     private var viewModel: SurveyListViewModel!
     
@@ -23,37 +27,63 @@ class HomeViewController: UICollectionViewController {
     
     private var pageSize: Int = 20
     
-    var pages: [HomePage] = []
-    
     weak var delegate: HomeViewControllerDelegate?
     
     private let pageControl: UIPageControl = {
         let pageControl = UIPageControl()
         pageControl.currentPage = 0
-        pageControl.numberOfPages = 3
         pageControl.currentPageIndicatorTintColor = .white
         pageControl.pageIndicatorTintColor = UIColor.white.withAlphaComponent(0.2)
         pageControl.translatesAutoresizingMaskIntoConstraints = false
         return pageControl
     }()
     
+    private let stackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.axis = .vertical
+        stackView.spacing = 4
+        return stackView
+    }()
+    
+    private let dateLabel: UILabel = {
+        let label = UILabel(placeHolder: "Date", size: 13)
+        
+        let currentDateTime = Date()
+        let dateFormat = currentDateTime.getFormattedDate(format: "EEEE, MMM d")
+        
+        label.text = "\(dateFormat)"
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    private let todayLabel: UILabel = {
+        let label = UILabel(placeHolder: "Today", size: 34)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    private let userImage: UIImageView = {
+        let imageView = UIImageView(image: #imageLiteral(resourceName: "HomeBackground2"))
+        imageView.layer.cornerRadius = 19
+        imageView.layer.masksToBounds = true
+        imageView.clipsToBounds = true
+        imageView.contentMode = .scaleAspectFill
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Register cell classes
-        self.collectionView!.register(HomeCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        self.collectionView!.register(HomeCollectionViewCell.self, forCellWithReuseIdentifier: HomeCollectionViewCell.identifier)
 
-        collectionView.backgroundColor = .white
+        collectionView.backgroundColor = .black
         collectionView.isPagingEnabled = true
         
-        pages = [
-            HomePage(title: "Working from home Check-In", description: "We would like to know how you feel about our work from home...", image: "HomeBackground1"),
-            HomePage(title: "Career training and development", description: "We would like to know what are your goals and skills you wanted...", image: "HomeBackground2"),
-            HomePage(title: "Inclusion and belonging", description: "Building a workplace culture that prioritizes belonging and inclusio...", image: "HomeBackground3")
-        ]
-        
+        fetchData()
         setupLayout()
-        fetchSurveyList()
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
@@ -65,18 +95,20 @@ class HomeViewController: UICollectionViewController {
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? HomeCollectionViewCell else {
-            fatalError("failed while casting")
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeCollectionViewCell.identifier, for: indexPath) as? HomeCollectionViewCell else {
+            return UICollectionViewCell()
         }
-    
+
         let page = pages[indexPath.item]
-        cell.homePage = page
+        print("PPPP current page ---> \(page)")
+        cell.surveyView = page
         
         return cell
     }
     
     override func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         
+        scrollView.showsHorizontalScrollIndicator = false
         let xPosition = targetContentOffset.pointee.x
         
         pageControl.currentPage = Int(xPosition / view.frame.width)
@@ -93,14 +125,34 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
 
 extension HomeViewController {
     func setupLayout() {
+        stackView.addArrangedSubview(dateLabel)
+        stackView.addArrangedSubview(todayLabel)
+        view.addSubview(stackView)
+        view.addSubview(userImage)
         view.addSubview(pageControl)
-//        view.addSubview(surveyButton)
         
+        // stackView
+        NSLayoutConstraint.activate([
+            stackView.topAnchor.constraint(equalTo: view.topAnchor, constant: 60),
+            stackView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20),
+            stackView.trailingAnchor.constraint(equalTo: userImage.trailingAnchor, constant: 100)
+        ])
+        
+        // userImage
+        NSLayoutConstraint.activate([
+            userImage.widthAnchor.constraint(equalToConstant: 36),
+            userImage.heightAnchor.constraint(equalToConstant: 36),
+            userImage.topAnchor.constraint(equalTo: view.topAnchor, constant: 85),
+            userImage.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20)
+        ])
+        
+        // pageControl
         NSLayoutConstraint.activate([
             pageControl.widthAnchor.constraint(equalToConstant: 48),
             pageControl.heightAnchor.constraint(equalToConstant: 8),
-            pageControl.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 25),
-            pageControl.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -206)
+            pageControl.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20),
+            pageControl.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
+            pageControl.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -210)
         ])
         
     }
@@ -110,26 +162,59 @@ extension HomeViewController {
 
 extension HomeViewController {
     @objc func handleSurvey() {
-        let surveyViewController:SurveyViewController = SurveyViewController()
+        let surveyViewController: SurveyViewController = SurveyViewController()
 
         surveyViewController.modalPresentationStyle = .fullScreen
         surveyViewController.modalTransitionStyle = .coverVertical
         present(surveyViewController, animated: true, completion: nil)
-//        print("Home button is pressed!!!!!!!!!!!!!!!!!!")
         
         delegate?.didHome()
     }
 }
+// MARK: - Networking
 
 extension HomeViewController {
-    private func fetchSurveyList() {
+    func fetchData() {
         NetworkManager().getSurveyList(page: page, pageSize: pageSize) { result in
             switch result {
-            case .success(let accounts):
-              print("ffffff ----> \(accounts)")
+            case .success(let survey):
+                
+                survey.forEach({ self.pages.append($0)})
+                self.pages = survey
+                
+                self.pageControl.numberOfPages = survey.count
+                
+                DispatchQueue.main.async {
+                    self.collectionView.reloadData()
+                }
+
             case .failure(let error):
                 print(error.localizedDescription)
             }
         }
+        
+        NetworkManager().getUser { result in
+            switch result {
+            case .success(let user):
+            
+                let userInfo = user.data.attributes
+                
+                print("PPPP user image ---> \(    userInfo.avatarUrl)")
+                
+                self.configureImage(userInfo.avatarUrl)
+                
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    private func configureImage(_ image: String) {
+        guard let url = URL(string: image) else {
+            return
+        }
+        let placeholderImage = UIImage(named: "HomeBackground1")
+        
+        userImage.af.setImage(withURL: url, placeholderImage: placeholderImage)
     }
 }

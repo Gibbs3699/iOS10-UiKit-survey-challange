@@ -14,7 +14,7 @@ protocol SurveyViewControllerDelegate: AnyObject {
 }
 
 class SurveyViewController: UIViewController {
-
+    
     let surveyView = SurveyView()
     
     weak var delegate: SurveyViewControllerDelegate?
@@ -48,12 +48,10 @@ class SurveyViewController: UIViewController {
 extension SurveyViewController {
     
     @objc func surveyPressed() {
-//        print("Survey in pressed!!!!!!!")
         delegate?.didSurvey()
     }
     
     @objc func backPressed() {
-//        print("back is pressed!!!!!!!")
         delegate?.backToHome()
     }
 
