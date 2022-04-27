@@ -15,11 +15,13 @@ protocol HomeViewControllerDelegate: AnyObject {
 
 class HomeViewController: UICollectionViewController {
 
-    let homeCollectionViewCell = HomeCollectionViewCell()
+    private let homeCollectionViewCell = HomeCollectionViewCell()
     
     private var survey: [SurveyAttributes] = [SurveyAttributes]()
     
-    var pages: [SurveyAttributes] = []
+    var surveyView = SurveyView()
+    
+    private var pages: [SurveyAttributes] = []
     
     private var viewModel: SurveyListViewModel!
     
@@ -98,9 +100,12 @@ class HomeViewController: UICollectionViewController {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeCollectionViewCell.identifier, for: indexPath) as? HomeCollectionViewCell else {
             return UICollectionViewCell()
         }
-
+        
         let page = pages[indexPath.item]
+        
+        surveyView.configure(with: page)
         print("PPPP current page ---> \(page)")
+        
         cell.surveyView = page
         
         return cell

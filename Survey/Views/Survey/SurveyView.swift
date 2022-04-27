@@ -12,6 +12,14 @@ class SurveyView: UIView {
     var surveyAction: (() -> Void)?
     var backAction: (() -> Void)?
     
+    struct ViewModel {
+        let title: String
+        let description: String
+        let coverImageUrl: String
+    }
+    
+    let viewModel: ViewModel? = nil
+    
     private let backgroundImage: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "HomeBackground1")
@@ -34,27 +42,31 @@ class SurveyView: UIView {
         return button
     }()
     
-    private let descriptionTextView: UITextView = {
-        let textView = UITextView()
-        
-        let attributedText = NSMutableAttributedString(string: "Title", attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 28), NSAttributedString.Key.foregroundColor: UIColor.white])
-        
-        attributedText.append(NSMutableAttributedString(string: "Description", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 17), NSAttributedString.Key.foregroundColor: UIColor.white.withAlphaComponent(0.7)]))
-        
-        textView.attributedText = attributedText
-        textView.translatesAutoresizingMaskIntoConstraints = false
-        textView.backgroundColor = .clear
-        textView.textAlignment = .left
-        textView.isEditable = false
-        textView.isScrollEnabled = false
-        
-        return textView
+    private let titleLabel: UILabel = {
+        let label = UILabel(placeHolder: "Title", size: 34)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    private let descriptionLabel: UILabel = {
+        let label = UILabel(placeHolder: "Description", size: 17)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    private let stackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.axis = .vertical
+        stackView.spacing = 4
+        return stackView
     }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        layout()
+        setupLayout()
+        
     }
     
     required init?(coder: NSCoder) {
@@ -64,12 +76,15 @@ class SurveyView: UIView {
 }
 
 extension SurveyView {
-    func layout() {
+    func setupLayout() {
         addSubview(backgroundImage)
         addSubview(backButton)
-        addSubview(descriptionTextView)
+        stackView.addArrangedSubview(titleLabel)
+        stackView.addArrangedSubview(descriptionLabel)
+        addSubview(stackView)
         addSubview(startSurveyButton)
         
+        // backgroundImage
         NSLayoutConstraint.activate([
             backgroundImage.topAnchor.constraint(equalTo: topAnchor),
             backgroundImage.leftAnchor.constraint(equalTo: leftAnchor),
@@ -77,6 +92,7 @@ extension SurveyView {
             backgroundImage.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
         
+        // backButton
         NSLayoutConstraint.activate([
             backButton.widthAnchor.constraint(equalToConstant: 30),
             backButton.heightAnchor.constraint(equalToConstant: 30),
@@ -84,12 +100,14 @@ extension SurveyView {
             backButton.leftAnchor.constraint(equalTo: leftAnchor, constant: 22)
         ])
         
+        // stackView
         NSLayoutConstraint.activate([
-            descriptionTextView.topAnchor.constraint(equalTo: backButton.bottomAnchor, constant: 6),
-            descriptionTextView.leftAnchor.constraint(equalTo: leftAnchor, constant: 20),
-            descriptionTextView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20)
+            stackView.topAnchor.constraint(equalTo: backButton.bottomAnchor, constant: 6),
+            stackView.leftAnchor.constraint(equalTo: leftAnchor, constant: 20),
+            stackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20)
         ])
         
+        // startSurveyButton
         NSLayoutConstraint.activate([
             startSurveyButton.widthAnchor.constraint(equalToConstant: 140),
             startSurveyButton.heightAnchor.constraint(equalToConstant: 56),
@@ -111,4 +129,32 @@ extension SurveyView {
     @objc func handleBack() {
         backAction?()
     }
+}
+
+// MARK: - configure survey view
+
+extension SurveyView {
+    
+    func configure(with viewModel: SurveyAttributes) {
+
+        DispatchQueue.main.async {
+            self.titleLabel.text = viewModel.title
+            self.descriptionLabel.text = viewModel.description
+            
+            print("SurveyView ----> \(viewModel.title)")
+            
+            self.configureImage(viewModel.coverImageUrl)
+        }
+
+    }
+    
+    private func configureImage(_ image: String) {
+        guard let url = URL(string: image) else {
+            return
+        }
+        let placeholderImage = UIImage(named: "HomeBackground1")
+        
+        backgroundImage.af.setImage(withURL: url, placeholderImage: placeholderImage)
+    }
+
 }
