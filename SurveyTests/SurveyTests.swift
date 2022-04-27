@@ -6,7 +6,7 @@
 //
 
 import XCTest
-@testable import Survey
+import Survey
 
 class SurveyTests: XCTestCase {
 

@@ -10,7 +10,13 @@ import Alamofire
 
 public struct APIClient {
     
-    static let apiUrl: String =  "https://survey-api.nimblehq.co"
+    #if PRO
+    static let apiUrl = "https://survey-api.nimblehq.co"
+    #else
+    static let apiUrl = "https://nimble-survey-web-staging.herokuapp.com/"
+    #endif
+    
+//    static let apiUrl: String =  "https://survey-api.nimblehq.co"
     
     static func authorizeUrl() -> String {
         return "\(apiUrl)/api/v1/oauth/token"

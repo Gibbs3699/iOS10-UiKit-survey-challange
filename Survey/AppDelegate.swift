@@ -61,33 +61,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 extension AppDelegate: LoginViewControllerDelegate {
     func didLogin() {
-        print("didLogin")
         displayHome()
     }
 }
 
 extension AppDelegate: SplashViewControllerDelegate {
     func didSplash() {
-        print("didSplash")
         displayLogin()
     }
 }
 
 extension AppDelegate: HomeViewControllerDelegate {
     func didHome() {
-        print("didHome")
         displaySurvey()
     }
 }
 
 extension AppDelegate: SurveyViewControllerDelegate {
     func didSurvey() {
-        print("didSurvey")
         displayThankyou()
     }
     
     func backToHome() {
-        print("backToHome")
         displayHome()
     }
 }

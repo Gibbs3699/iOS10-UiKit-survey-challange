@@ -140,9 +140,6 @@ extension SurveyView {
         DispatchQueue.main.async {
             self.titleLabel.text = viewModel.title
             self.descriptionLabel.text = viewModel.description
-            
-            print("SurveyView ----> \(viewModel.title)")
-            
             self.configureImage(viewModel.coverImageUrl)
         }
 

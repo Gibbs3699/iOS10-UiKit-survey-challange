@@ -104,7 +104,6 @@ class HomeViewController: UICollectionViewController {
         let page = pages[indexPath.item]
         
         surveyView.configure(with: page)
-        print("PPPP current page ---> \(page)")
         
         cell.surveyView = page
         
@@ -153,11 +152,9 @@ extension HomeViewController {
         
         // pageControl
         NSLayoutConstraint.activate([
-            pageControl.widthAnchor.constraint(equalToConstant: 48),
-            pageControl.heightAnchor.constraint(equalToConstant: 8),
             pageControl.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20),
-            pageControl.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
-            pageControl.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -210)
+            pageControl.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            pageControl.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -200)
         ])
         
     }
@@ -203,8 +200,6 @@ extension HomeViewController {
             case .success(let user):
             
                 let userInfo = user.data.attributes
-                
-                print("PPPP user image ---> \(    userInfo.avatarUrl)")
                 
                 self.configureImage(userInfo.avatarUrl)
                 
